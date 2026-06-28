@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{CLIENT}} Demo — Step-by-Step (1 page)</title>
+<style>
+/* >>> inline templates/brand.css here <<< plus the small extras below */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap');
+:root{--blue:#005EFF;--cyan:#00C6FF;--navy:#191F2E;--txt:#191F2E;--dim:#414651;--faint:#6b7280;--bg:#F5F7FA;--line:#e5e9f0;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;--blue-light:rgba(0,94,255,0.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:13px/1.45 Inter,system-ui,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:22px 26px 30px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:23px;margin:0 0 2px;color:var(--navy);letter-spacing:-.02em}
+.sub{color:var(--dim);font-size:13px;margin:0 0 2px}.src{color:var(--faint);font-size:11px;margin:0 0 12px}
+.gradient-text{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.bar{display:flex;flex-wrap:wrap;gap:8px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:8px;padding:9px 12px;margin:0 0 14px;font-size:12px}
+.bar b{color:var(--navy)}code{background:var(--blue-light);border:1px solid #d6e4ff;border-radius:4px;padding:1px 5px;font:11.5px ui-monospace,Consolas,monospace;color:#0046bd}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--faint);font-weight:600;font-size:10.5px;text-transform:uppercase;background:#fafbfc}tr:last-child td{border-bottom:none}
+td.n{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--blue);width:26px;text-align:center;font-size:15px}
+td.do{width:46%}td.do b{color:var(--navy)}td.say{color:var(--dim);font-style:italic}
+tr.hero td{background:#fffdf6}tr.hero td.n{color:var(--warn)}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:100px;margin-left:4px}.tag.block{background:#fee2e2;color:#b91c1c}.tag.ok{background:#dcfce7;color:#15803d}
+.ref{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:11.5px;color:var(--dim)}.ref div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 10px}.ref b{color:var(--navy)}
+footer{margin-top:12px;color:var(--faint);font-size:10.5px;border-top:1px solid var(--line);padding-top:8px}
+@media print{body{background:#fff}.wrap{padding:0}@page{size:A4;margin:12mm}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>{{CLIENT}} Demo — <span class="gradient-text">Step-by-Step</span></h1>
+  <p class="sub">{{DATE_TIME}} · {{AUDIENCE}} · Odoo {{ODOO_VERSION}}</p>
+  <p class="src">Follow top to bottom. ~25 min.</p>
+  <div class="bar">
+    <span><b>Login:</b> <code>{{ODOO_URL}}</code></span>
+    <span><b>Manager:</b> <code>{{ADMIN_LOGIN}}</code></span>
+    <span><b>Rep:</b> <code>{{REP_LOGIN}}</code> / <code>{{REP_PASSWORD}}</code></span>
+  </div>
+  <table>
+    <thead><tr><th>#</th><th>Do (click path)</th><th>Say</th></tr></thead>
+    <tbody>
+      <tr><td class="n">1</td><td class="do"><b>Frame it.</b> Open the Sales app.</td><td class="say">"{{FRAME_LINE}}"</td></tr>
+      <tr><td class="n">2</td><td class="do"><b>Clean order.</b> Sales → Orders → New → {{CLEAN_CUSTOMER}} → add products → Confirm <span class="tag ok">goes through</span></td><td class="say">"{{CLEAN_LINE}}"</td></tr>
+      <tr class="hero"><td class="n">3</td><td class="do"><b>⭐ {{HERO1}}.</b> {{HERO1_CLICKS}} <span class="tag block">BLOCKED</span></td><td class="say">"{{HERO1_LINE}}"</td></tr>
+      <tr class="hero"><td class="n">4</td><td class="do"><b>⭐ Override.</b> {{OVERRIDE_CLICKS}} <span class="tag ok">confirmed</span></td><td class="say">"{{OVERRIDE_LINE}}"</td></tr>
+      <tr><td class="n">5</td><td class="do"><b>{{HERO2}}.</b> {{HERO2_CLICKS}}</td><td class="say">"{{HERO2_LINE}}"</td></tr>
+      <tr><td class="n">6</td><td class="do"><b>Invoice.</b> On a confirmed order → Create Invoice → Post.</td><td class="say">"{{INVOICE_LINE}}"</td></tr>
+      <tr><td class="n">7</td><td class="do"><b>Close.</b> Hand over the one-pager.</td><td class="say">"{{CLOSE_LINE}}"</td></tr>
+    </tbody>
+  </table>
+  <div class="ref">{{DATA_REF_CHIPS}}</div>
+  <footer>Rehearse once, leave the demo quote in draft · have a hotspot backup · {{SELLER}} × {{CLIENT}}</footer>
+</div>
+</body>
+</html>

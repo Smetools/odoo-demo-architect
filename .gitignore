@@ -1,0 +1,5 @@
+# secrets / per-engagement config — never publish
+scripts/creds.json
+scripts/demo_config.json
+**/__pycache__/
+*.pyc

@@ -1,0 +1,46 @@
+{
+  "_comment": "Per-client demo config. Fill from the discovery call. Generic food-distributor example below — replace with the client's real shape. Amounts in the chosen currency.",
+  "client": "Acme Distribution",
+  "currency": "EGP",
+  "use_credit_limit": true,
+  "scope_modules": ["sale_management", "stock", "account_accountant", "stock_delivery", "stock_picking_batch", "fleet", "stock_fleet", "web_studio", "base_automation"],
+
+  "products": [
+    { "name": "Cooking Oil 16L", "weight": 15.0, "price": 1150 },
+    { "name": "Rice 25kg",        "weight": 25.0, "price": 1400 },
+    { "name": "Sugar 50kg Sack",  "weight": 50.0, "price": 1900 },
+    { "name": "Frozen Carton 10kg","weight": 10.5, "price": 900 },
+    { "name": "Canned Case 24x",  "weight": 9.0,  "price": 540 }
+  ],
+
+  "customers": [
+    { "name": "Grand Hotel",        "credit_limit": 50000 },
+    { "name": "Corner Restaurant",  "credit_limit": 30000 },
+    { "name": "Industrial Foods Co","credit_limit": 200000 }
+  ],
+
+  "vehicles": [
+    { "model": "Small Truck", "category": "Small Truck (1 ton)", "plate": "DEMO-1001", "capacity_kg": 1000 },
+    { "model": "Large Truck", "category": "Large Truck (3 ton)", "plate": "DEMO-2002", "capacity_kg": 3000 }
+  ],
+
+  "pricelist": {
+    "name": "B2B HoReCa",
+    "percent": 5.0,
+    "assign_to": ["Grand Hotel", "Corner Restaurant"]
+  },
+
+  "prestage_receivables": [
+    { "_comment": "Put Grand Hotel JUST under its 50000 limit so a live order tips it over (the credit-block hero).",
+      "customer": "Grand Hotel", "amount": 46000 },
+    { "customer": "Corner Restaurant", "amount": 5000 },
+    { "customer": "Industrial Foods Co", "amount": 20000 }
+  ],
+
+  "heroes": [
+    { "name": "credit-limit hard block + manager override",
+      "approach": "no-code-first: Studio approval on Confirm, or custom action_confirm override; gate override to an approver group" },
+    { "name": "fleet load by weight",
+      "approach": "native v19 via stock_fleet: vehicle capacity on fleet.vehicle.model.category, batch shows used_weight_percentage" }
+  ]
+}

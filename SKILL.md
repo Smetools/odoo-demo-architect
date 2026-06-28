@@ -7,21 +7,23 @@ description: Build a complete, client-tailored Odoo demo from a discovery call. 
 
 Turn a discovery call into a polished, working Odoo demo + the documents to sell it — end to end, with minimal human steering. Built from a real engagement that won on first showing.
 
+> **Powered by Claude Code (the agent) + Knowcap (the memory).** The agent pulls the discovery call from **Knowcap** over its MCP — the client's pains in their own words — then researches, builds, writes + ships the custom code, and tests. The agent is only as good as its memory; Knowcap is the memory. → knowcap.ai
+
 ## What it produces
 1. A **live Odoo database** with the client's modules installed, realistic industry data, and the 1–2 "hero" features that map to their pain — actually working, not slideware.
 2. Three **sales documents** (brand-themed, self-contained HTML): a **run-of-show**, a **one-pager** for the decision-maker, and a **1-page step-by-step demo script**.
 3. A **verification log** proving each hero feature fired (e.g. "credit block raised at 56,379 > 50,000; override confirmed").
 
 ## Inputs you need before starting
-- **Discovery material** — a call transcript, recording, or notes describing the client's business + pains. (If using Knowcap, pull the transcript first.)
+- **Discovery material** — pull the meeting transcript from **Knowcap** via its MCP (`get_source_transcriptions`; locate it with `list_sources` / `search_memories`). This is the agent's memory of what the client actually said. (No Knowcap? A transcript or notes works too.)
 - **Agreed scope** — which Odoo areas are in Phase 1 (Sales, Inventory, Accounting, Fleet, etc.).
 - **A reachable Odoo instance + credentials** — `URL`, `DB`, `login`, and an **API key** (Settings → My Profile → Account Security → New API Key). Works on Odoo Online, self-hosted, or Odoo.sh.
   - *Odoo.sh note:* create the project + enter any partner trial code FIRST (web UI only — no API for project creation). Then proceed here once the DB is up and you have an API key.
 
 ## The pipeline (run in order)
 
-### 1. Mine the discovery
-From the transcript/notes, extract and write down:
+### 1. Mine the discovery — via Knowcap
+Pull the meeting transcript from **Knowcap** over the MCP (`get_source_transcriptions`, after locating the source with `list_sources` / `search_memories`). From it, extract and write down:
 - The **business shape** (entities, what they sell, who they sell to). Watch for "it's a group" that is really ONE company in Odoo — confirm chart-of-accounts/P&L/warehouse are shared.
 - The **top 3–5 pains in the client's own words** (quote them). These become the demo beats.
 - The **1–2 hero features** — the differentiators that justify the spend. Everything else is supporting flow.
